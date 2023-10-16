@@ -1,0 +1,120 @@
+@import "../../style.scss";
+
+// Define styles for the Share component
+.share {
+    @include themify($themes) {
+        // Apply a box shadow for a card-like appearance
+        -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+
+        // Add rounded corners and set background color and text color
+        border-radius: 20px;
+        background-color: themed("bg");
+        color: themed("textColor");
+
+        // Add margin at the bottom to create spacing between Share components
+        margin-bottom: 20px;
+
+        // Define styles for the container within the Share component
+        .container {
+        padding: 20px;
+
+        // Define styles for the top section of the Share component
+        .top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .left{
+                display: flex;
+                align-items: center;
+                flex: 3;
+
+                // Style user profile picture
+                img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                object-fit: cover;
+                }
+
+                // Style the input field for entering post content
+                input {
+                border: none;
+                outline: none;
+                padding: 20px 10px;
+                background-color: transparent;
+                width: 60%;
+                color: themed("textColor");
+                }
+            }
+
+            .right{
+                flex: 1;
+                display: flex;
+                justify-content: flex-end;
+                .file {
+                    width: 100px;
+                    height: 100px;
+                    object-fit: cover;
+                    border-radius: 10px;
+                }
+            }
+        }
+
+        // Create a horizontal line separator
+        hr {
+            margin: 20px 0px;
+            border: none;
+            height: 0.5px;
+            background-color: themed("border");
+        }
+
+        // Define styles for the bottom section of the Share component
+        .bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            // Define styles for the left side of the bottom section
+            .left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            // Define styles for each item within the left side
+            .item {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                cursor: pointer;
+
+                // Style image icons within items
+                img {
+                height: 20px;
+                }
+
+                // Style text within items
+                span {
+                font-size: 12px;
+                color: gray;
+                }
+            }
+            }
+
+            // Define styles for the right side of the bottom section
+            .right {
+            button {
+                border: none;
+                padding: 5px;
+                color: white;
+                cursor: pointer;
+                background-color: #5271ff;
+                border-radius: 3px;
+            }
+            }
+        }
+        }
+    }
+}

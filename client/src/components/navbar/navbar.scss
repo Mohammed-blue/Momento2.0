@@ -1,0 +1,99 @@
+@import "../../style.scss";
+
+// Define styles for the .navbar class
+.navbar {
+    // Use the themify mixin to apply theme-specific styles
+    @include themify($themes) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px;
+        height: 50px;
+        border-bottom: 1px solid themed("border");
+        position: sticky;
+        top: 0;
+        background-color: themed("bg");
+        color:themed("textColor");
+        z-index: 999;
+
+        // Styles for the left section of the navbar
+        .left {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+
+            // Styles for the site name
+            span {
+            font-weight: bold;
+            font-size: 20px;
+            color: themed("logo");
+            }
+
+            // Styles for the search bar
+            .search {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid themed("border");
+            border-radius: 5px;
+            padding: 5px;
+
+            input {
+                border: none;
+                width: 500px;
+                background-color: transparent;
+                color: themed("textColor");
+
+                // Responsive styles for mobile
+                @include mobile{
+                display: none;
+                }
+
+                // Responsive styles for tablets
+                @include tablet{
+                width: 200px;
+                }
+            }
+            }
+        }
+
+        // Styles for the Right section of the navbar
+        .right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            @include mobile{
+            display: none;
+            }
+
+            // Responsive styles for tables
+            .user {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+
+            // Responsive styles for tables
+            @include tablet{
+                display: none;
+            }
+
+            // Styles for the user profile picture
+            img {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
+            // Styles for the user name
+            span {
+                // Add any additional styles for the use name here
+                font-size: 16px;
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); // Add a subtle text shadow
+            }
+            }
+        }
+        }
+    }

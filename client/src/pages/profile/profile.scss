@@ -1,0 +1,148 @@
+@import "../../style.scss";
+
+// Define the styles for the profile page
+.profile {
+    @include themify($themes) {
+        // Set the background color using the themed function
+        background-color: themed("bgSoft");
+
+        // Images section
+        .images {
+        width: 100%;
+        height: 300px;
+        position: relative;
+
+        // Cover photo styling
+        .cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        // Profile picture styling
+        .profilePic {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+            top: 200px;
+        }
+        }
+
+        // Profile container styling
+        .profileContainer {
+        padding: 20px 70px;
+
+        // Responsive design for mobile
+        @include mobile {
+            padding: 10px;
+        }
+
+        // Responsive design for tablet
+        @include tablet {
+            padding: 20px;
+        }
+
+        // User information section
+        .uInfo {
+            height: 180px;
+            // Apply box shadow for a subtle effect
+            -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+            -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+            box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+            border-radius: 20px;
+            background-color: themed("bg");
+            color: themed("textColor");
+            padding: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+
+            // Responsive design for mobile
+            @include mobile {
+            flex-direction: column;
+            height: 30vh;
+            padding: 20px;
+            margin-top: 100px;
+            }
+
+            // Left section containing social media links
+            .left {
+            flex: 1;
+            display: flex;
+            gap: 10px;
+
+            // Responsive design for tablet
+            @include tablet {
+                flex-wrap: wrap;
+            }
+
+            // Styling for links
+            a {
+                color: themed("textColorSoft");
+            }
+            }
+
+            // Center section containing user name, info, and follow button
+            .center {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+
+            // Styling for user name
+            span {
+                font-size: 30px;
+                font-weight: 500;
+            }
+
+            // Styling for user information items
+            .info {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+
+                // Styling for each info item
+                .item {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                color: themed("textColorSoft");
+
+                // Styling for text in the info item
+                span {
+                    font-size: 12px;
+                }
+                }
+            }
+
+            // Styling for the follow button
+            button {
+                border: none;
+                background-color: #5271ff;
+                color: white;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            }
+
+            // Right section containing icons for email and more options
+            .right {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 10px;
+            }
+        }
+        }
+    }
+}

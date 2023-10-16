@@ -1,0 +1,57 @@
+    // Define color themes using Sass maps
+    $themes: (
+    light: (
+        textColor: #000,             // Text color for the light theme
+        bg: white,                   // Background color for the light theme
+        logo: darkblue,              // Logo color for the light theme
+        bgSoft: #f6f3f3,             // Soft background color for the light theme
+        textColorSoft: #555,         // Soft text color for the light theme
+        border: lightgray,           // Border color for the light theme
+    ),
+    dark: (
+        textColor: whitesmoke,       // Text color for the dark theme
+        bg: #222,                    // Background color for the dark theme
+        logo: white,                 // Logo color for the dark theme
+        bgSoft: #333,                // Soft background color for the dark theme
+        textColorSoft: lightgray,    // Soft text color for the dark theme
+        border: #444,                // Border color for the dark theme
+    ),
+    );
+
+    // Define a mixin for theming
+    @mixin themify($themes) {
+    @each $theme, $map in $themes {
+        // Apply styles for each theme
+        .theme-#{$theme} & {
+        $theme-map: () !global;   // Initialize an empty theme-specific map
+        @each $key, $submap in $map {
+            $value: map-get(map-get($themes, $theme), "#{$key}");
+            $theme-map: map-merge(
+            $theme-map,
+            (
+                $key: $value,
+            )
+            ) !global;               // Merge theme-specific values into the map
+        }
+        @content;                 // Include CSS rules within the theme context
+        $theme-map: null !global; // Reset the theme-specific map
+        }
+    }
+    }
+
+    // Define a function for retrieving themed values
+    @function themed($key) {
+    @return map-get($theme-map, $key);
+    }
+
+    // Define mixins for mobile and tablet breakpoints
+    @mixin mobile {
+    @media (max-width: 480px) {
+        @content;                 // Include CSS rules for mobile screens
+    }
+    }
+    @mixin tablet {
+    @media (max-width: 960px) {
+        @content;                 // Include CSS rules for tablet screens
+    }
+    }

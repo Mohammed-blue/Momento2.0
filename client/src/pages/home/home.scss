@@ -1,0 +1,20 @@
+
+@import "../../style.scss";
+
+// Define the styles for the .home component.
+.home {
+    @include themify($themes) {
+        padding: 20px 70px;
+        background-color: themed("bgSoft");
+
+        // Responsive styling for mobile devices.
+        @include mobile {
+        padding: 10px;
+        }
+
+        // Responsive styling for tablet devices.
+        @include tablet {
+        padding: 20px;
+        }
+    }
+}

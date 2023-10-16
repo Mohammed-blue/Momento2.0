@@ -1,0 +1,87 @@
+// Import the general styles from style.scss
+@import "../../style.scss";
+
+// Define styles for the post element
+.post {
+    // Apply theming based on the defined themes in style.scss
+    @include themify($themes) {
+        // Add a box shadow, border-radius, and background color based on the theme
+        -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        border-radius: 20px;
+        background-color: themed("bg");
+        color: themed("textColor");
+    }
+
+    // Styles for the main content container of the post
+    .container {
+        padding: 20px;
+
+        // Styles for the user information section and post content
+        .user {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        // Styles for the user information (profile picture, name, and date)
+        .userInfo {
+            display: flex;
+            gap: 20px;
+
+            // Styling for the profile picture
+            img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            }
+
+            // Styling for the user details (name and date)
+            .details {
+            display: flex;
+            flex-direction: column;
+
+            // Styling for the user's name (higher font weight)
+            .name {
+                font-weight: 500;
+            }
+
+            // Styling for the date (smaller font size)
+            .date {
+                font-size: 12px;
+            }
+            }
+        }
+        }
+
+        // Styling for the main content of the post
+        .content {
+        margin: 20px 0px;
+
+        // Styling for images within the post content
+        img {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            margin-top: 20px;
+        }
+        }
+
+        // Styling for the information section of the post (likes, comments, etc.)
+        .info {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        // Styling for individual items in the information section
+        .item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        }
+    }
+}
