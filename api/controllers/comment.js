@@ -23,6 +23,7 @@ export const addComment = (req, res) => {
     //  Retrieve the access token from cookies
     const token = req.cookies.accessToken;
     if(!token) return res.status(401).json("Not logged in!"); // If no token is found.
+console.log(req.body);
 
     // Verify the token with the provided secret key:
     jwt.verify(token, "secretkey", (err, userInfo) => {
@@ -43,6 +44,9 @@ export const addComment = (req, res) => {
             // Check for any errors that may have occurred during the database query
             if (err) {
                 // If there's an error, return a 500 Internal Server Error response along with the error details.
+                console.log(err);
+                console.log(data);
+
                 return res.status(500).json(err);
             }
 
